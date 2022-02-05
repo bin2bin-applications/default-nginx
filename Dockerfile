@@ -1,7 +1,7 @@
 FROM nginx:latest
 LABEL maintainer="bin2bin"
 
-RUN mkdir -p /nginx/sites-enabled && \
+RUN mkdir -p /sites-enabled && \
     mkdir -p /nginx/ssl/self-signed && \
     openssl req -x509 -nodes -days 10000 -newkey rsa:2048 \
     -keyout /nginx/ssl/self-signed/privatekey \ 
