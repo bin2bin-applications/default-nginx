@@ -1,8 +1,7 @@
 FROM nginx:latest
 LABEL maintainer="bin2bin"
 
-RUN mkdir -p /nginx/sites-enabled && \
-    mkdir -p /etc/nginx/ssl/self-signed && \
+RUN mkdir -p /etc/nginx/ssl/self-signed && \
     openssl req -x509 -nodes -days 10000 -newkey rsa:2048 \
     -keyout /etc/nginx/ssl/self-signed/privatekey \ 
     -out /etc/nginx/ssl/self-signed/certificate \
@@ -10,5 +9,4 @@ RUN mkdir -p /nginx/sites-enabled && \
 
 COPY /default.conf /etc/nginx/default.conf
 COPY /nginx.conf /etc/nginx/nginx.conf
-VOLUME [ "/nginx" ]
 EXPOSE 80 443
